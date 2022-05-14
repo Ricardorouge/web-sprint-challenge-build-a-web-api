@@ -36,4 +36,12 @@ router.put('/:id',validateID,validateAction,(req,res,next)=>{
     .catch(next)
 })
 
+router.delete('/:id',validateID,(req,res,next)=>{
+    Actions.remove(req.params.id)
+    .then(result=>{
+        res.end()
+    })
+    .catch(next)
+})
+
 module.exports = router
