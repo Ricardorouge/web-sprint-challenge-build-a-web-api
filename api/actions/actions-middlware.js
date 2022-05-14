@@ -15,7 +15,17 @@ async function validateID(req,res,next){
     }
 } 
 
+function validateAction(req,res,next){
+    const {project_id,description,notes} = req.body
+    if(!project_id || !description || !notes){
+        res.status(400).json({message:'missing required fields'})
+    } else{
+        next()
+    }
+}
+
 module.exports = {
     validateID,
-    
+    validateAction
+
 }
