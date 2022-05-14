@@ -28,4 +28,12 @@ router.post('/',validateAction,(req,res,next)=>{
     .catch(next)
 })
 
+router.put('/:id',validateID,validateAction,(req,res,next)=>{
+    Actions.update(req.params.id,req.body)
+    .then(result=>{
+        res.json(result)
+    })
+    .catch(next)
+})
+
 module.exports = router
